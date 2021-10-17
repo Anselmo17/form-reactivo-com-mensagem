@@ -10,11 +10,9 @@
        formControlName="name"
         name="name" required
          />
-         <!-- [class.field-error]="form.submitted && nameField.invalid" 
-
-      <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
-        Enter name
-      </div> -->
+         <small *ngIf="formUser.get('name').errors" class="invalid-feedback">
+          Nome é obrigatório
+        </small>
     </div>
 
     <button
@@ -42,6 +40,9 @@
       <input class="form-control" type="email" placeholder="digite seu email" name="email"
         formControlName="email"
        />
+       <small *ngIf="formUser.get('email').errors" class="invalid-feedback">
+        Email é obrigatório
+      </small>
     </div>
 
     <hr class="my-4">
@@ -79,12 +80,7 @@
       ></textarea>
     </div>
 
-    <!-- mensagem de erro -->
-    <div [hidden]="!postError" class="alert alert-danger">
-      {{postErrorMessage}}
-    </div>
-
-    <div class="container fundo-form align-items-center mt-5 mb-4">
+    <div class="container mt-5 mb-4">
       <input type="submit" class="btn btn-primary" value="adicionar" [disabled]="!formUser.valid">
     </div>
   </form>

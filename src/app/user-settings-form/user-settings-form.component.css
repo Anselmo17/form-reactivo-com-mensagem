@@ -6,6 +6,11 @@ h2{
   border: 1px solid red;
 }
 
+.invalid-feedback {
+  color: red;
+  font-size: 1em;
+}
+
 .container{
   max-width: 650px;
 }
