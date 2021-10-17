@@ -1,6 +1,6 @@
 <!-- formulario -->
 <div class="container fundo-form">
-  <!-- <h2>{{title}}</h2> -->
+  <h2>{{title}}</h2>
   
 
   <form  [formGroup]="formUser" (ngSubmit)="onSubmit()">
@@ -85,7 +85,7 @@
     </div>
 
     <div class="container fundo-form align-items-center mt-5 mb-4">
-      <input type="submit" class="btn btn-primary" value="adicionar">
+      <input type="submit" class="btn btn-primary" value="adicionar" [disabled]="!formUser.valid">
     </div>
   </form>
 </div>

@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserSettings } from '../data/user-settings';
 
 // configs form
-import { NgForm } from '@angular/forms';
+import { NgForm, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 // services
@@ -60,10 +60,10 @@ export class UserSettingsFormComponent implements OnInit {
 
   createForm(user: UserSettings) {
     this.formUser = this.formBuilder.group({
-      name: [user.name],
+      name: [user.name, [Validators.required]],
       interfaceStyle: [user.interfaceStyle],
       singleModel: [user.singleModel],
-      email: [user.email],
+      email: [user.email,[Validators.email, Validators.required]],
       startDate: [user.startDate],
       subscriptionType: [user.subscriptionType],
       notes: [user.notes]
@@ -85,6 +85,11 @@ export class UserSettingsFormComponent implements OnInit {
     }*/
   }
 
+  // transmiti o evento ao component pai
+  confirmarAcesso(obj: any) {
+    obj.success = true;
+    this.resCadastro.emit(obj);
+  }
 
   // caso de erros 
   onHttpError(errorResponse: any) {
@@ -94,9 +99,4 @@ export class UserSettingsFormComponent implements OnInit {
     this.postErrorMessage = errorResponse.error.errorMessage;
   }
 
-  confirmarAcesso(obj: any) {
-    obj.success = true;
-    const response = JSON.stringify(obj);
-    this.resCadastro.emit(response);
-  }
 }
