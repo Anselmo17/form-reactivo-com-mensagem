@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web-form';
+
+  nomeFormulario: string = 'Formulário de Cadastro'
+
+  ngOnInit() {
+   
+  }
+
+  resultForm(response) {
+    console.log('-------- retorno do cadastro com sucesso ------------', response);
+  }
 }
