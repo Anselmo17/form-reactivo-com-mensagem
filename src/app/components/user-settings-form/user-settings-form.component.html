@@ -1,0 +1,95 @@
+<!-- formulario -->
+<div class="container fundo-form">
+  <h2>{{title}}</h2>
+  
+  <form  [formGroup]="formUser" (ngSubmit)="onSubmit()">
+    <div class="form-group mt-top">
+      <label>
+         Name<span class="obrigatorio">*</span>:
+      </label>
+      <input class="form-control" placeholder="digite o nome" 
+       formControlName="name"
+        name="name" required
+         />
+         <ng-container *ngIf="formUser.controls.name.touched">
+          <small *ngIf="formUser.get('name').errors" class="invalid-feedback">
+            Nome é obrigatório
+          </small>
+         </ng-container>
+    </div>
+
+    <div class="mt-top">
+      <label for="StarDate">
+        Start Date<span class="obrigatorio">*</span>:
+      </label>
+      <input type="text" placeholder="click aqui para adicionar data"
+      [bsConfig]="{containerClass:'theme-orange'}"
+      formControlName="startDate"
+      name="startDate" class="form-control"
+        bsDaterangepicker>
+        <ng-container *ngIf="formUser.controls.startDate.touched">
+          <small *ngIf="formUser.get('startDate').errors" class="invalid-feedback">
+            Período é obrigatório!!!
+          </small>
+        </ng-container>
+    </div>
+
+
+    <div class="form-check form-group mt-top">
+      <label class="form-check-label" for="email">
+        Email<span class="obrigatorio">*</span>:
+      </label>
+      <input class="form-control" type="email" placeholder="digite seu email" name="email"
+        formControlName="email"
+       />
+       <ng-container *ngIf="formUser.controls.email.touched">
+        <small *ngIf="formUser.get('email').errors" class="invalid-feedback">
+          Email é obrigatório
+        </small>
+       </ng-container>
+    </div>
+
+    <hr class="my-4">
+
+    <p>Nível de conhecimento:</p>
+
+
+    <div class="form-group">
+      <div class="btn-group">
+        <label class="btn btn-primary" formControlName="levelConhecimento" name="gender" btnRadio="iniciante"
+          tabindex="0" role="button">Iniciante</label>
+        <label class="btn btn-primary" formControlName="levelConhecimento" name="gender" btnRadio="intermediario"
+          tabindex="0" role="button">Intermediário</label>
+        <label class="btn btn-primary" formControlName="levelConhecimento" name="gender" btnRadio="Avançado"
+          tabindex="0" role="button">Avançado</label>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="form-group">
+      <label for="subscriptionType">Tipo de Assinatura</label>
+      <select class="form-control" id="subscriptionType" name="subscriptionType"
+      formControlName="subscriptionType">
+        <option *ngFor="let type of subscriptionTypes | async">
+          {{type}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Comentários adicionais</label>
+      <textarea id="notes" name="notes" class="form-control" rows="3" 
+      formControlName="notes"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-success btn-ml-0" value="adicionar" [disabled]="!formUser.valid">
+        <button class="ml-3" type="button" class="btn btn-secondary" (click)="reset()">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+
+

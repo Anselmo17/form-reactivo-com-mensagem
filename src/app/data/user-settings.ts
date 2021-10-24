@@ -1,7 +1,7 @@
 export class UserSettings {
   name: string;
   email: boolean;
-  interfaceStyle: string;
+  levelConhecimento: string;
   subscriptionType: string;
   notes: string;
   startDate?: string;

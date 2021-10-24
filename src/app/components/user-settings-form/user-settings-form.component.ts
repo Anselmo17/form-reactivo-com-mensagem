@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { UserSettings } from '../data/user-settings';
+import { UserSettings } from '../../data/user-settings';
 
 // configs form
 import { NgForm, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 // services
-import { DataService } from '../data/data.service';
+import { DataService } from '../../data/data.service'; // '../data/data.service';
 import { Observable } from 'rxjs';
 
 // define o local do globalizacao
@@ -36,8 +36,6 @@ export class UserSettingsFormComponent implements OnInit {
   userRating = 0;
   maxRating = 10;
 
-  singleModel = 'On';
-
   // forms
   formUser: FormGroup;
 
@@ -61,10 +59,10 @@ export class UserSettingsFormComponent implements OnInit {
   createForm(user: UserSettings) {
     this.formUser = this.formBuilder.group({
       name: [user.name, [Validators.required]],
-      interfaceStyle: [user.interfaceStyle],
+      levelConhecimento: [user.levelConhecimento],
       singleModel: [user.singleModel],
-      email: [user.email,[Validators.email, Validators.required]],
-      startDate: [user.startDate],
+      email: [user.email, [Validators.email, Validators.required]],
+      startDate: [user.startDate, [Validators.required]],
       subscriptionType: [user.subscriptionType],
       notes: [user.notes]
     })
@@ -75,6 +73,7 @@ export class UserSettingsFormComponent implements OnInit {
   onSubmit() {
     console.log(this.formUser.value);
     const user = this.formUser.value;
+    console.log('--- enviado ---')
     this.confirmarAcesso(user);
     /*if (form.valid) {
       this.dataService.postUserSettingsForm(this.userSettings)
@@ -99,4 +98,7 @@ export class UserSettingsFormComponent implements OnInit {
     this.postErrorMessage = errorResponse.error.errorMessage;
   }
 
+  reset(){
+    this.formUser.reset();
+  }
 }

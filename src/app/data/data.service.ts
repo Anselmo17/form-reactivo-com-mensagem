@@ -18,7 +18,8 @@ export class DataService {
 
 
   getSubscriptionTypes(): Observable<string[]> {
-    return of(['Monthly', 'Annual', 'Lifetime']);
+    const listContracts = ['Mensal', 'Anual', 'Vitalício'];
+    return of(listContracts);
   }
 
 }
