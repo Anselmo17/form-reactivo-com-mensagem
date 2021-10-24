@@ -2,9 +2,8 @@
 <div class="container fundo-form">
   <h2>{{title}}</h2>
   
-
   <form  [formGroup]="formUser" (ngSubmit)="onSubmit()">
-    <div class="form-group">
+    <div class="form-group mt-top">
       <label>
          Name<span class="obrigatorio">*</span>:
       </label>
@@ -19,7 +18,7 @@
          </ng-container>
     </div>
 
-    <div>
+    <div class="mt-top">
       <label for="StarDate">
         Start Date<span class="obrigatorio">*</span>:
       </label>
@@ -36,7 +35,7 @@
     </div>
 
 
-    <div class="form-check form-group mt-3">
+    <div class="form-check form-group mt-top">
       <label class="form-check-label" for="email">
         Email<span class="obrigatorio">*</span>:
       </label>
@@ -85,8 +84,8 @@
       ></textarea>
     </div>
 
-    <div class="mt-5 mb-4">
-        <input type="submit" class="btn btn-success" value="adicionar" [disabled]="!formUser.valid">
+    <div class="form-group">
+        <input type="submit" class="btn btn-success btn-ml-0" value="adicionar" [disabled]="!formUser.valid">
         <button class="ml-3" type="button" class="btn btn-secondary" (click)="reset()">Cancelar</button>
     </div>
   </form>

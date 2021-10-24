@@ -18,3 +18,11 @@ h2{
 .obrigatorio{
 color: red;
 }
+
+.mt-top{
+  margin-top: 20px;
+}
+
+.btn-ml-0{
+  margin-right: 5px;
+}
