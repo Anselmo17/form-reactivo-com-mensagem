@@ -14,3 +14,7 @@ h2{
 .container{
   max-width: 650px;
 }
+
+.obrigatorio{
+color: red;
+}

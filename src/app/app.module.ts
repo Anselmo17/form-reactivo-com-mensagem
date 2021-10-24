@@ -10,7 +10,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 // componentes
 import { AppComponent } from './app.component';
-import { UserSettingsFormComponent } from './user-settings-form/user-settings-form.component';
+import { UserSettingsFormComponent } from '../app/components/user-settings-form/user-settings-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
